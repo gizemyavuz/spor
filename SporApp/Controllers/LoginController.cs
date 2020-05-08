@@ -19,6 +19,7 @@ namespace SporApp.Controllers
         [HttpPost]
         public ActionResult Index(User u)
         {
+
             var bilgiler = db.Users.FirstOrDefault(x => x.Email == u.Email && x.Password == u.Password);
             if(bilgiler !=null)
             {
