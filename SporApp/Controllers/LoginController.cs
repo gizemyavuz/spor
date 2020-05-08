@@ -24,6 +24,7 @@ namespace SporApp.Controllers
             var bilgiler = db.Users.FirstOrDefault(x => x.Email == u.Email && x.Password == u.Password);
             if(bilgiler !=null)
             {
+
                 FormsAuthentication.SetAuthCookie(bilgiler.Email, false);
                 return RedirectToAction("Index", "Home");
             }
