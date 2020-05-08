@@ -14,6 +14,7 @@ namespace SporApp.Controllers
         // GET: Login
         public ActionResult Index()
         {
+
             return View();
         }
         [HttpPost]
