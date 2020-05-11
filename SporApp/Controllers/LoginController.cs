@@ -34,6 +34,7 @@ namespace SporApp.Controllers
             {
                 FormsAuthentication.SetAuthCookie(bilgiler.Email, true);
                 return RedirectToAction("Index", "Home");
+
             }
             else
             {
