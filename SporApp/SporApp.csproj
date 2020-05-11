@@ -248,6 +248,7 @@
     <Compile Include="Entity\DataContext.cs" />
     <Compile Include="Entity\DataInitilializer.cs" />
     <Compile Include="Entity\Program.cs" />
+    <Compile Include="Entity\SessionController.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Entity\UserProgram.cs" />
     <Compile Include="Global.asax.cs">
@@ -284,6 +285,7 @@
     <Content Include="Views\UserPrograms\Edit.cshtml" />
     <Content Include="Views\UserPrograms\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using SporApp.Entity;
 using System.Web.Security;
+using System.ComponentModel.DataAnnotations;
 
 namespace SporApp.Controllers
 {
@@ -12,26 +13,39 @@ namespace SporApp.Controllers
     {
        private DataContext db = new DataContext();
         // GET: Login
-        public ActionResult Index()
+       
+        [AllowAnonymous]
+        public ActionResult Login()
         {
-
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Index(User u)
-        {
-
-            var bilgiler = db.Users.FirstOrDefault(x => x.Email == u.Email && x.Password == u.Password);
-            if(bilgiler !=null)
+            if (String.IsNullOrEmpty(HttpContext.User.Identity.Name))
             {
+                FormsAuthentication.SignOut();
+                return View();
+            }
+            return Redirect("/Home/Index");
+        }
 
-                FormsAuthentication.SetAuthCookie(bilgiler.Email, false);
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Login(User u,string returnurl)
+        {
+            var bilgiler = db.Users.FirstOrDefault(x => x.Email == u.Email && x.Password == u.Password);
+            if (bilgiler != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgiler.Email, true);
                 return RedirectToAction("Index", "Home");
             }
             else
             {
-                return View();  
+                ModelState.AddModelError("", "EMail veya şifre hatalı!");
             }
+            return View(u);
         }
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Login");
+        }
+
     }
 }

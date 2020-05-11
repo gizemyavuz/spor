@@ -25,7 +25,7 @@ namespace SporApp.Entity
 
             var users = new List<User>
             {
-                new User(){ Id=1, Name="gizem", Surname="yavuz"},
+                new User(){ Id=1, Name="gizem", Surname="yavuz",Email="gizem",Phone="05303381196",Password="123456",IsAdmin=true,Age=24,Gender="F",Weight=5},
                 new User(){ Id=2, Name="ibrahim", Surname="aker"}
             };
 
