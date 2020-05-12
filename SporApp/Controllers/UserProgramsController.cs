@@ -86,6 +86,7 @@ namespace SporApp.Controllers
                 db.UserPrograms.Add(userProgram);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
 
             return View(userProgram);
