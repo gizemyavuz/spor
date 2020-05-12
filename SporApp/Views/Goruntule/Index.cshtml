@@ -1,0 +1,25 @@
+﻿@using SporApp.Entity
+@model List<User>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<table class="table table-bordered">
+    <tr>
+        <th>User ID</th>
+        <th>USER</th>
+    </tr>
+    <tbody>
+        @foreach(var usr in Model)
+        {
+            <tr>
+                <td>@usr.Id</td>
+                <td>@usr.Name</td>
+                <td>@usr.Surname</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using SporApp.App_Start;
 using SporApp.Entity;
 
 namespace SporApp.Controllers
@@ -36,6 +37,7 @@ namespace SporApp.Controllers
         }
 
         // GET: Users/Create
+        [AdminAuthAction]
         public ActionResult Create()
         {
             return View();
@@ -102,6 +104,11 @@ namespace SporApp.Controllers
                 return HttpNotFound();
             }
             return View(user);
+        }
+
+        public ActionResult NotAuth()
+        {
+            return View();
         }
 
         // POST: Users/Delete/5

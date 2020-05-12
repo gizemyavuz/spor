@@ -33,7 +33,8 @@ namespace SporApp.Controllers
             var bilgiler = db.Users.FirstOrDefault(x => x.Email == u.Email && x.Password == u.Password);
             if (bilgiler != null)
             {
-                FormsAuthentication.SetAuthCookie(bilgiler.Email, true);
+                
+                FormsAuthentication.SetAuthCookie(bilgiler.Id + "," + bilgiler.IsAdmin.ToString(), true);
                 return RedirectToAction("Index", "Home");
 
             }
