@@ -12,8 +12,8 @@ namespace SporApp.Entity
         {
             var programs = new List<Program>()
             {
-                new Program(){Id=1,Name="agirlik" },
-                new Program(){Id=2,Name="kosu"}
+                new Program(){Id=1,Name="agirlik", Description ="dfds" },
+                new Program(){Id=2,Name="kosu", Description ="dfsd"}
 
             };
 
