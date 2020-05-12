@@ -12,6 +12,7 @@ namespace SporApp.Controllers
     public class LoginController : Controller
     {
        private DataContext db = new DataContext();
+
         // GET: Login
        
         [AllowAnonymous]
