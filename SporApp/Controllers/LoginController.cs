@@ -23,7 +23,16 @@ namespace SporApp.Controllers
                 FormsAuthentication.SignOut();
                 return View();
             }
-            return Redirect("/Home/Index");
+
+            bool isAdmin = Convert.ToBoolean(HttpContext.User.Identity.Name.Split(',')[1]);
+            if (isAdmin)
+            {
+                return RedirectToAction("Index", "Users");
+            }
+            else
+            {
+                return RedirectToAction("Goruntule", "Goruntule");
+            }
         }
 
         [AllowAnonymous]
@@ -35,7 +44,14 @@ namespace SporApp.Controllers
             {
                 
                 FormsAuthentication.SetAuthCookie(bilgiler.Id + "," + bilgiler.IsAdmin.ToString(), true);
-                return RedirectToAction("Index", "Home");
+                if (bilgiler.IsAdmin)
+                {
+                    return RedirectToAction("Index", "Users");
+                }
+                else
+                {
+                    return RedirectToAction("Goruntule", "Goruntule");
+                }
 
             }
             else

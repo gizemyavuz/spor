@@ -12,7 +12,11 @@ namespace SporApp.Controllers
     [AuthAction]
     public class GoruntuleController : Controller
     {
-      
+        int userId;
+        bool isAdmin;
+
+     
+
         private DataContext db = new DataContext();
         // GET: Goruntule
         public ActionResult Index()
@@ -25,7 +29,13 @@ namespace SporApp.Controllers
 
         public ActionResult goruntule()
         {
-            int userId = Convert.ToInt32(HttpContext.User.Identity.Name);
+            if (HttpContext != null && !string.IsNullOrEmpty(HttpContext.User.Identity.Name))
+            {
+                userId = Convert.ToInt32(HttpContext.User.Identity.Name.Split(',')[0]);
+                isAdmin = Convert.ToBoolean(HttpContext.User.Identity.Name.Split(',')[1]);
+            }
+
+            ViewBag.isAdmin = isAdmin;
 
             var deger = db.UserPrograms.Where(m=>m.UserId == userId).
                  Select(g => new UserProgramViewList

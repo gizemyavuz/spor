@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SportFIT</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="SportFIT template project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/sportsfit/styles/bootstrap-4.1.2/bootstrap.min.css">
+    <link href="~/sportsfit/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/sportsfit/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/sportsfit/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/sportsfit/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/sportsfit/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/sportsfit/styles/responsive.css">
+</head>
+<body>
+
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start trans_400">
+                            <a href="#">
+                                <div class="logo d-flex flex-row align-items-center justify-content-start"><img src="~/sportsfit/images/dot.png" alt=""><div>Sport<span>fit</span></div></div>
+                            </a>
+                            <nav class="main_nav">
+                                <ul class="d-flex flex-row align-items-center justify-content-start">
+                                    <li class="active"><a href="~/sportsfit/index.html">Home</a></li>
+                                    <li><a href="~/sportsfit/about.html">About us</a></li>
+                                    <li><a href="~/sportsfit/services.html">Classes & Services</a></li>
+                                    <li><a href="~/Login/Login">Giriş</a></li>
+                                    <li><a href="~/sportsfit/contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                            <div class="phone d-flex flex-row align-items-center justify-content-start ml-auto">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <div>652-345 3222 11</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hamburger -->
+
+        <div class="hamburger_bar trans_400 d-flex flex-row align-items-center justify-content-start">
+            <div class="hamburger">
+                <div class="menu_toggle d-flex flex-row align-items-center justify-content-start">
+                    <span>menu</span>
+                    <div class="hamburger_container">
+                        <div class="menu_hamburger">
+                            <div class="line_1 hamburger_lines" style="transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+                            <div class="line_2 hamburger_lines" style="visibility: inherit; opacity: 1;"></div>
+                            <div class="line_3 hamburger_lines" style="transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu -->
+
+        <div class="menu trans_800">
+            <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+                <ul>
+                    <li><a href="~/sportsfit/index.html">Home</a></li>
+                    <li><a href="~/sportsfit/about.html">About us</a></li>
+                    <li><a href="~/sportsfit/services.html">Classes & Services</a></li>
+                    <li><a href="~/sportsfit/blog.html">Blog</a></li>
+                    <li><a href="~/sportsfit/contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="menu_phone d-flex flex-row align-items-center justify-content-start">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>652-345 3222 11</span>
+            </div>
+        </div>
+
+        <!-- Home -->
+
+        @RenderBody()
+
+        <!-- Footer -->
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="footer_container">
+                            <div class="footer_content">
+                                <div class="footer_logo">
+                                    <a href="#">
+                                        <div class="logo d-flex flex-row align-items-center justify-content-center"><img src="~/sportsfit/images/dot.png" alt=""><div>Sport<span>fit</span></div></div>
+                                    </a>
+                                </div>
+                                <nav class="footer_nav">
+                                    <ul class="d-flex flex-sm-row flex-column align-items-sm-start align-items-center justify-content-center">
+                                        <li><a href="~/sportsfit/index.html">Home</a></li>
+                                        <li><a href="~/sportsfit/about.html">About us</a></li>
+                                        <li><a href="~/sportsfit/services.html">Classes & Services</a></li>
+                                        <li><a href="~/Login/Login">Giriş</a></li>
+                                        <li><a href="~/sportsfit/contact.html">Contact</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="newsletter_container">
+                                    <form action="#" id="newsletter_form" class="newsletter_form">
+                                        <input type="text" class="newsletter_input" placeholder="Enter your email here" required="required">
+                                        <button class="newsletter_button">go</button>
+                                    </form>
+                                </div>
+                                <div class="copyright d-flex flex-row align-items-start justify-content-sm-end justify-content-center">
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </div>
+                            </div>
+                            <div class="footer_image text-center"><img src="~/sportsfit/images/footer.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/sportsfit/js/jquery-3.2.1.min.js"></script>
+    <script src="~/sportsfit/styles/bootstrap-4.1.2/popper.js"></script>
+    <script src="~/sportsfit/styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+    <script src="~/sportsfit/plugins/greensock/TweenMax.min.js"></script>
+    <script src="~/sportsfit/plugins/greensock/TimelineMax.min.js"></script>
+    <script src="~/sportsfit/plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="~/sportsfit/plugins/greensock/animation.gsap.min.js"></script>
+    <script src="~/sportsfit/plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="~/sportsfit/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="~/sportsfit/plugins/easing/easing.js"></script>
+    <script src="~/sportsfit/plugins/progressbar/progressbar.min.js"></script>
+    <script src="~/sportsfit/plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="~/sportsfit/plugins/colorbox/jquery.colorbox-min.js"></script>
+    <script src="~/sportsfit/js/custom.js"></script>
+</body>
+</html>
+
