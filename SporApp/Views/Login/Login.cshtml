@@ -1,60 +1,49 @@
 ﻿@model SporApp.Entity.User
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <link href="~/Content/Admin/css/Login/base.css" rel="stylesheet" />
 
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
+<div class="container">
+    <div class="row" style="padding-top: 200px">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
 
-    <div class="login" style="width:350px !important;margin:0 auto; margin-top:200px;">
-
-        <div class="box-header">
-
-            <h2> Admin Panel Yönetimi</h2>
-
-        </div>
-
-
-        <div class="box">
-
-            <div class="notification tip"><span class="strong"> Admin Panel Giriş</span>@Html.ValidationSummary(false, "")</div>
-
-            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-            {
-
-                <div class="form col">
-
-
-                    @Html.LabelFor(f => f.Email)
-                    @Html.TextBoxFor(f => f.Email, new { title = "Kullanıcı adınızı giriniz.", @Value = @ViewBag.email })
-
-
-
-
-
-                    @Html.LabelFor(f => f.Password)
-                    @Html.PasswordFor(f => f.Password, new { title = "Kullanıcı şifrenizi giriniz.", @Value = @ViewBag.password })
-
-
-
-
+            <div class="login-form">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
                    
-                    <button type="submit" class="small fr">Giriş</button><br class="cl" />
+                     
+                <div class="jumbotron" >
+                    <h2 class="text-center">SporApp'e Hoş Geldiniz</h2>
 
+                    <div style="margin-top:20px; border:1px solid #495057; padding: 10px 10px 10px 10px">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Email, new { title = "Kullanıcı adınızı giriniz.", htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Password, new { title = "Kullanıcı şifrenizi giriniz.", htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Giris</button>
+                        </div>
+                    </div>
                 </div>
-
-            }
+                }
+            </div>
         </div>
+        <div class="col-md-3"></div>
 
     </div>
+    </div>
 
-</body>
-</html>

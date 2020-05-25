@@ -68,6 +68,11 @@ namespace SporApp.Controllers
 
             return View(programgoruntule);
         }
+
+        public ActionResult usergoruntule()
+        {
+            return View();
+        }
       
     }
 }

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SporApp.Entity;
+using SporApp.Models;
+using System.IO;
 
 namespace SporApp.Controllers
 {
@@ -28,11 +30,26 @@ namespace SporApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Program program = db.Programs.Find(id);
+           
             if (program == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+
+            ProgramDetailView model = new ProgramDetailView
+            {
+                Id = program.Id,
+                Calories = program.Calories,
+                CreationTime = program.CreationTime,
+                Description = program.Description,
+                Link = program.Link,
+                Name = program.Name,
+                UpdateTime = program.UpdateTime,
+                ImageUrl = program.ImageUrl
+               // ImageUrl = string.IsNullOrEmpty(program.ImageUrl) ? string.Empty : "http://" + HttpContext.Request.Url.Host + ":" + HttpContext.Request.Url.Port + program.ImageUrl
+            };
+
+            return View(model);
         }
 
         // GET: Programs/Create
@@ -45,11 +62,33 @@ namespace SporApp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(Program program)
+        public ActionResult Create(ProgramCreateView program)
         {
             if (ModelState.IsValid)
             {
-                db.Programs.Add(program);
+
+                string fileName = Path.GetFileNameWithoutExtension(program.File.FileName);
+                string fileExtension = Path.GetExtension(program.File.FileName);
+                fileName = DateTime.Now.ToString("yyyyMMdd") + "_" + fileName.Trim() + fileExtension;
+
+                var path = Path.Combine(Server.MapPath("~/Content/programImages"), fileName);
+                program.File.SaveAs(path);
+
+                program.ImageUrl = "/Content/programImages/" + fileName;
+
+                // aktarım yapıldı.
+                Program _program = new Program {
+                    Id = program.Id,
+                    Description = program.Description,
+                    Calories = program.Calories,
+                    CreationTime = program.CreationTime,
+                    ImageUrl = program.ImageUrl,
+                    Link= program.Link,
+                    Name = program.Name,
+                    UpdateTime = program.UpdateTime
+                };
+
+                db.Programs.Add(_program);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

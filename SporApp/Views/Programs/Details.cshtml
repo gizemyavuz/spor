@@ -1,5 +1,4 @@
-﻿@model SporApp.Entity.Program
-
+﻿@model SporApp.Models.ProgramDetailView
 @{
     ViewBag.Title = "Details";
 }
@@ -27,6 +26,23 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ImageUrl)" alt="Image" width="300" height="300" />
+        </dd>
+
+        <dt>
+            Youtube
+        </dt>
+
+        <dd>
+            <iframe width="560" height="315" src="@Html.DisplayFor(model=>model.Link)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </dd>
+
+
+        <dt>
             @Html.DisplayNameFor(model => model.CreationTime)
         </dt>
 
@@ -45,6 +61,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id}) |
     @Html.ActionLink("Back to List", "Index")
 </p>

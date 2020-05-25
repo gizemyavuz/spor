@@ -1,5 +1,7 @@
-﻿using System;
+﻿using SporApp.Entity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +13,10 @@ namespace SporApp
     {
         protected void Application_Start()
         {
+            Database.SetInitializer(new DataInitilializer());
+            DataContext c = new DataContext();
+            c.Database.Initialize(true);
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
