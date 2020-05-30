@@ -68,15 +68,21 @@ namespace SporApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (program.File != null && program.File.FileName != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(program.File.FileName);
+                    string fileExtension = Path.GetExtension(program.File.FileName);
+                    fileName = DateTime.Now.ToString("yyyyMMdd") + "_" + fileName.Trim() + fileExtension;
 
-                string fileName = Path.GetFileNameWithoutExtension(program.File.FileName);
-                string fileExtension = Path.GetExtension(program.File.FileName);
-                fileName = DateTime.Now.ToString("yyyyMMdd") + "_" + fileName.Trim() + fileExtension;
+                    var path = Path.Combine(Server.MapPath("~/Content/programImages"), fileName);
+                    program.File.SaveAs(path);
 
-                var path = Path.Combine(Server.MapPath("~/Content/programImages"), fileName);
-                program.File.SaveAs(path);
-
-                program.ImageUrl = "/Content/programImages/" + fileName;
+                    program.ImageUrl = "/Content/programImages/" + fileName;
+                }
+                else
+                {
+                    program.ImageUrl = string.Empty;
+                }
 
                 // aktarım yapıldı.
                 Program _program = new Program {
