@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SporApp.Entity;
 using SporApp.Models;
 using System.IO;
+using SporApp.App_Start;
 
 namespace SporApp.Controllers
 {
@@ -53,6 +54,7 @@ namespace SporApp.Controllers
         }
 
         // GET: Programs/Create
+        [AdminAuthAction]
         public ActionResult Create()
         {
             return View();
@@ -104,20 +106,54 @@ namespace SporApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Program program = db.Programs.Find(id);
+
             if (program == null)
             {
                 return HttpNotFound();
             }
-            return View(program);
+
+            ProgramCreateView model = new ProgramCreateView {
+                Id = program.Id,
+                Description = program.Description,
+                Calories = program.Calories,
+                CreationTime = program.CreationTime,
+                ImageUrl = program.ImageUrl,
+                Link = program.Link,
+                Name = program.Name,
+                UpdateTime = program.UpdateTime,
+            };
+            return View(model);
         }
 
         // POST: Programs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,CreationTime,UpdateTime")] Program program)
+        public ActionResult Edit(ProgramCreateView model)
         {
+            Program program = new Program()
+            {
+                Id = model.Id,
+                Description = model.Description,
+                Calories = model.Calories,
+                CreationTime = model.CreationTime,
+                ImageUrl = model.ImageUrl,
+                Link = model.Link,
+                Name = model.Name,
+                UpdateTime = model.UpdateTime,
+            };
+
+            if(model.File != null && model.File.FileName != null)
+            {
+                string fileName = Path.GetFileNameWithoutExtension(model.File.FileName);
+                string fileExtension = Path.GetExtension(model.File.FileName);
+                fileName = DateTime.Now.ToString("yyyyMMdd") + "_" + fileName.Trim() + fileExtension;
+
+                var path = Path.Combine(Server.MapPath("~/Content/programImages"), fileName);
+                model.File.SaveAs(path);
+                program.ImageUrl = "/Content/programImages/" + fileName;
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(program).State = EntityState.Modified;

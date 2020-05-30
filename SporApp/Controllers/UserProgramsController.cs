@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using SporApp.App_Start;
 using SporApp.Entity;
 using SporApp.Models;
 
@@ -28,7 +29,10 @@ namespace SporApp.Controllers
                ProgramName = g.Program.Name,
                ScheduleTime = g.ScheduleTime,
                UpdateTime = g.UpdateTime,
-               UserId = g.UserId
+               UserId = g.UserId,
+               Calories= g.Program.Calories,
+               ImageUrl = g.Program.ImageUrl
+               
            }).ToList();
 
             return View(result);
@@ -49,7 +53,8 @@ namespace SporApp.Controllers
             return View(userProgram);
         }
 
-        // GET: UserPrograms/Create
+        // GET: UserPrograms/Create 
+        [AdminAuthAction]
         public ActionResult Create()
         {
             List<SelectListItem> degerprograms = (from i in db.Programs.ToList()

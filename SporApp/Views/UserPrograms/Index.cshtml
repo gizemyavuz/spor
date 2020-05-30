@@ -27,6 +27,12 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Calories)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.CreationTime)
         </th>
         <th>
@@ -53,15 +59,21 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Calories)
+        </td>
+        <td>
+            <img src="@Url.Content(item.ImageUrl)" alt="Image" width="300" height="300" />
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.CreationTime)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UpdateTime)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
