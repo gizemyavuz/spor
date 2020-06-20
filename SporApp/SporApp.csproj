@@ -607,6 +607,7 @@
     <Content Include="sportsfit\images\test_2.jpg" />
     <Content Include="sportsfit\images\test_3.jpg" />
     <Content Include="sportsfit\images\timetable.jpg" />
+    <Content Include="sportsfit\images\user.png" />
     <Content Include="sportsfit\index.html" />
     <Content Include="sportsfit\js\about.js" />
     <Content Include="sportsfit\js\blog.js" />
@@ -665,7 +666,9 @@
     <Content Include="theme\js\holder.min.js" />
     <Content Include="theme\product-details.html" />
     <Content Include="theme\product-list.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Auth.cs" />
